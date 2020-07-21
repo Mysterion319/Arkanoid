@@ -1,0 +1,2 @@
+id: Edelgard file: ../Game/Assests/Sprites/Edelgard.png
+id: Rebecca file: ../Game/Assests/Sprites/Rebecca.png
