@@ -5,24 +5,16 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
 #include "Paddle.h"
-
+#include "Background.h"
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(640, 480), "Arkanoid");//Create the window
-	
-	sf::Texture paddleTexture;
-	paddleTexture.loadFromFile("Paddle.jpg");
+	Paddle * m_paddle;
+	Background * m_background;
 
-	sf::Sprite paddle(paddleTexture);
-
-	sf::Vector2u size = paddleTexture.getSize();
-	paddle.setPosition(100,50);
-	paddle.setScale(500, 500);
-
-
-
+	m_background = new Background(sf::Vector2f(0, 0.f));
+	m_paddle = new Paddle(sf::Vector2f(-150.f, 300.f));
 	while (window.isOpen())
 	{
 		// handle events
@@ -41,8 +33,8 @@ int main()
 		window.clear();
 
 		// draw SFML content
-		
-		window.draw(paddle);
+		window.draw(*m_background->GetSprite());
+		window.draw(*m_paddle->GetSprite());
 		window.display();
 	}
 
