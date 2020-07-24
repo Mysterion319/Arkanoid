@@ -12,7 +12,7 @@ Background::Background(sf::Vector2f size)
 	const sf::Texture* backgroundTexture = &texture;
 	m_background->setTexture(*backgroundTexture);
 	m_background->setPosition(sf::Vector2f(m_background->getPosition().x, size.y - m_background->getPosition().y));
-
+	m_background->setScale(4, 3);
 
 
 

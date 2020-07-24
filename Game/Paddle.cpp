@@ -4,16 +4,32 @@
 
 Paddle::Paddle(sf::Vector2f size)
 {
+
+	float static const PaddleSetScaleX = 1.3f;
+	float static const PaddleSetScaleY = 1.3f;
+	float static const PaddleSetPositionX = 250.f;
+	float static const PaddleSetPositionY = 400.f;
+
+
+
+
+
+
+
+
+
+
+
 	m_paddle = new sf::Sprite();// adding in new assigns it to the heap.
 
-	if (!texture.loadFromFile("Assests/Sprites/Paddle.jpg"))
+	if (!texture.loadFromFile("Assests/Sprites/Paddle.png"))
 	{
 
 	}
-	const sf::Texture* backgroundTexture = &texture;
-	m_paddle->setTexture(*backgroundTexture);
-	m_paddle->setPosition(sf::Vector2f(m_paddle->getPosition().x, size.y - m_paddle->getPosition().y));
-
+	const sf::Texture* paddleTexture = &texture;
+	m_paddle->setTexture(*paddleTexture);
+	m_paddle->setPosition(PaddleSetPositionX, PaddleSetPositionY);
+	m_paddle->setScale(PaddleSetScaleX, PaddleSetScaleY);
 
 
 	
