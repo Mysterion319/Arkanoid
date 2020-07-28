@@ -27,6 +27,12 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Blocks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Paddle.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Blocks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <array>
-
-using std::array;
 
 
 class Ball

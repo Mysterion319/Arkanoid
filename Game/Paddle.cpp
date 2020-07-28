@@ -8,7 +8,7 @@ Paddle::Paddle(sf::Vector2f size)
 	float static const PaddleSetScaleX = 1.3f;
 	float static const PaddleSetScaleY = 1.3f;
 	float static const PaddleSetPositionX = 250.f;
-	float static const PaddleSetPositionY = 400.f;
+	float static const PaddleSetPositionY = 450.f;
 
 
 

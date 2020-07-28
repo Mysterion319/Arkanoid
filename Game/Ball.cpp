@@ -7,8 +7,8 @@ Ball::Ball(sf::Vector2f size)
 {
 	float static const BallSetScaleX = 2.0f;
 	float static const BallSetScaleY = 2.0f;
-	float static const BallSetPositionX = 260.f;
-	float static const BallSetPositionY = 260.f;
+	float static const BallSetPositionX = 300.f;
+	float static const BallSetPositionY = 350.f;
 	m_ball = new sf::Sprite();
 
 
