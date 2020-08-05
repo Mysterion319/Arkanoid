@@ -1,17 +1,28 @@
+#pragma once
+
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-class Block;
-class Game : public sf::Drawable
+class Paddle;
+class Background;
+class Ball;
+class Blocks;
+
+class Game 
 {
-private:
-	const float m_windowWidth;
-	const float m_windowHeight;
-
-	sf::Texture* t1;
-	std::vector<Block*> m_block;
 public:
+	Game();
+	~Game();
 
+	void Loop();
 
-	Game(float p_width, float p_height);
+private:
+	Paddle * m_paddle;
+	Background * m_background;
+	Blocks * m_blocks;
+	Ball * m_ball;
+	sf::RenderWindow *window;
 	
+
 };
+
+
+

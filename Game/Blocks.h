@@ -8,7 +8,7 @@ class Blocks
 private:
 
 	sf::Sprite * m_blocks;
-	sf::Texture t1;
+	sf::Texture blockTexture;
 	float originalPosX, originalPosY;
 	array< sf::Sprite*, 100> blocks;
 public:

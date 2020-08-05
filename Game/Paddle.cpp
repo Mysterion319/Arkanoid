@@ -15,7 +15,8 @@ Paddle::Paddle(sf::Vector2f size)
 
 
 
-
+	const float  accel = 0.45f;
+	const float  decel = 0.03f;
 
 
 
@@ -32,9 +33,22 @@ Paddle::Paddle(sf::Vector2f size)
 	m_paddle->setScale(PaddleSetScaleX, PaddleSetScaleY);
 
 
-	
+
+
 }
 
+void Paddle::Move(sf::Event event)
+{
+	if (sf::Keyboard::Key::Left == event.key.code)
+	{
+		m_paddle->move(-80, 0);
+	}
+	else if (sf::Keyboard::Key::Right == event.key.code)
+	{
+		m_paddle->move(80, 0);
+	}
+	
+}
 
 Paddle::~Paddle()
 {
