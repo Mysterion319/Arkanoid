@@ -1,6 +1,6 @@
-#include <array>
+#include <Vector>
 #include <SFML/Graphics.hpp>
-using std::array;
+using std::vector;
 
 class Blocks
 {
@@ -10,11 +10,15 @@ private:
 	sf::Sprite * m_blocks;
 	sf::Texture blockTexture;
 	float originalPosX, originalPosY;
-	array< sf::Sprite*, 100> blocks;
+	/*float  BallSetScaleX;
+	float  BallSetScaleY;
+	float  BallSetPositionX;
+	float  BallSetPositionY;*/
+	vector< sf::Sprite*> *blocks;
 public:
 	Blocks();
 	~Blocks();
-	array< sf::Sprite*, 100> getblocks();
+	vector< sf::Sprite*> *getblocks();
 	
 
 

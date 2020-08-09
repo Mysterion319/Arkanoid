@@ -11,17 +11,16 @@ class Game
 public:
 	Game();
 	~Game();
-
+	void UpdateGame();
 	void Loop();
 
 private:
 	Paddle * m_paddle;
 	Background * m_background;
-	Blocks * m_blocks;
 	Ball * m_ball;
 	sf::RenderWindow *window;
-	
-
+	Blocks * m_blocks;
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
 

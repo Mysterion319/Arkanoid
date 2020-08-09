@@ -16,7 +16,6 @@ Game::Game()
 	m_paddle = new Paddle(sf::Vector2f(10.f, 10.f));
 	m_ball = new Ball(sf::Vector2f(10.f, 10.f));
 	m_blocks = new Blocks();
-
 }
 
 
@@ -26,10 +25,21 @@ Game::~Game()
 
 
 
-//void Game::UpdateGame(double p_time)
-//{
-//}
+void Game::UpdateGame()
+{
 
+
+
+}
+
+void Game::draw(sf::RenderTarget & target, sf::RenderStates states) const
+{
+	
+
+
+
+	
+}
 
 
 void Game::Loop()
@@ -53,33 +63,46 @@ void Game::Loop()
 			}
 		}
 
-		// update
-		
-
-		//intersect code
-
+	
+	
 		if (m_ball->GetSprite()->getGlobalBounds().intersects(m_paddle->GetSprite()->getGlobalBounds()))
 		{
-			m_ball->PaddleBounce(sf::Vector2f(0.0f, 0.0f));
-			
+			m_ball->ChangeDirection(sf::Vector2f(1.0f,-1.0f));
+
 		}
+
+
+		for (int i = 0; i < m_blocks->getblocks()->size();i++)
+		{
+
+			if (m_ball->GetSprite()->getGlobalBounds().intersects(m_blocks->getblocks()->at(i)->getGlobalBounds()))
+			{
+				
+				m_blocks->getblocks()->erase(m_blocks->getblocks()->begin() +i);
+
+			}
+		}
+
 		
-
-
-
-		m_ball->Move(sf::Vector2f(1.5f, 0.1f));
+			
+		m_ball->Move(sf::Vector2f(1.5f, 1.1f));
 		window->clear();
 
-		// draw SFML content
+		
+
+	
 		window->draw(*m_background->GetSprite());
 
 
 		window->draw(*m_paddle->GetSprite());
 		window->draw(*m_ball->GetSprite());
 
-		for (auto i : m_blocks->getblocks()) {
-			window->draw(*i);
+
+		for (int j = 0; j < m_blocks->getblocks()->size(); j++)
+		{
+			window->draw(*m_blocks->getblocks()->at(j));
 		}
+
 
 		window->display();
 	}
