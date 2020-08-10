@@ -19,6 +19,7 @@ public:
 	Blocks();
 	~Blocks();
 	vector< sf::Sprite*> *getblocks();
+	void Rotate(float rotation);
 	
 
 

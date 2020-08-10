@@ -13,6 +13,7 @@ private:
 public:
 	Ball(sf::Vector2f size);
 	void Move(sf::Vector2f p_speed);
+	void Rotate(float rotation);
 	void ChangeDirection(sf::Vector2f p_change);
 	
 	

@@ -53,17 +53,36 @@ void Game::Loop()
 		{
 			switch (event.type)
 			{
-			case sf::Event::KeyReleased:
+			case sf::Event::KeyPressed:
 
 				m_paddle->Move(event);
+				//m_blocks->Rotate(30.f);
 				break;
-
+	
 			default:
 				break;
 			}
 		}
 
+
+		//inputs 
+
+		if (m_ball->GetSprite()->getPosition().x < 0)
+		{
+			m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
+		}
 	
+
+		if (m_ball->GetSprite()->getPosition().y < 0)
+		{
+			m_ball->ChangeDirection(sf::Vector2f(1.0f, -1.0f));
+		}
+
+		if (m_ball->GetSprite()->getPosition().x > 640)
+		{
+			m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
+		}
+
 	
 		if (m_ball->GetSprite()->getGlobalBounds().intersects(m_paddle->GetSprite()->getGlobalBounds()))
 		{
@@ -72,12 +91,55 @@ void Game::Loop()
 		}
 
 
+
+
+		
+
+
+
+
+
+
+
+
 		for (int i = 0; i < m_blocks->getblocks()->size();i++)
 		{
 
 			if (m_ball->GetSprite()->getGlobalBounds().intersects(m_blocks->getblocks()->at(i)->getGlobalBounds()))
 			{
+
+				if (m_ball->GetSprite()->getPosition().x < m_blocks->getblocks()->at(i)->getPosition().x - m_blocks->getblocks()->at(i)->getGlobalBounds().width)
+				{
+					m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
+				}
+				else if (m_ball->GetSprite()->getPosition().x > m_blocks->getblocks()->at(i)->getPosition().x + m_blocks->getblocks()->at(i)->getGlobalBounds().width)
+				{
+					m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
+				}
 				
+
+
+
+				if (m_ball->GetSprite()->getPosition().y < m_blocks->getblocks()->at(i)->getPosition().y - m_blocks->getblocks()->at(i)->getGlobalBounds().height)
+				{
+					m_ball->ChangeDirection(sf::Vector2f(1.0f, -1.0f));
+				}
+				else if (m_ball->GetSprite()->getPosition().y > m_blocks->getblocks()->at(i)->getPosition().y + m_blocks->getblocks()->at(i)->getGlobalBounds().height)
+				{
+					m_ball->ChangeDirection(sf::Vector2f(1.0f, -1.0f));
+				}
+
+
+
+
+
+
+
+
+
+
+
+				//m_ball->GetSprite()->getPosition().x
 				m_blocks->getblocks()->erase(m_blocks->getblocks()->begin() +i);
 
 			}

@@ -1,5 +1,5 @@
 #include "Ball.h"
-
+#include <iostream>
 
 
 
@@ -25,6 +25,15 @@ Ball::Ball(sf::Vector2f size)
 	const sf::Texture* BallTexture = &texture;
 	m_ball->setTexture(*BallTexture);
 	m_ball->setPosition(BallSetPositionX, BallSetPositionY);
+
+	
+	std::cout << m_ball->getPosition().x << m_ball->getPosition().y <<  std::endl;
+	m_ball->setOrigin(m_ball->getGlobalBounds().width / 2, m_ball->getGlobalBounds().height / 2);
+
+	std::cout << m_ball->getOrigin().x << m_ball->getOrigin().y << std::endl;
+
+
+
 	m_ball->setScale(BallSetScaleX, BallSetScaleY);
 
 
@@ -39,6 +48,12 @@ void Ball::Move(sf::Vector2f p_speed)
 	
 	
 }
+
+void Ball::Rotate(float rotation)
+{
+	m_ball->rotate(rotation);
+}
+
 
 void Ball::ChangeDirection(sf::Vector2f p_change)
 {
