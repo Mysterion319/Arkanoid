@@ -1,61 +1,118 @@
 #include "Paddle.h"
-
+#include "SpeedPowerUp.h"
 
 
 Paddle::Paddle(sf::Vector2f size)
 {
 
-	float static const PaddleSetScaleX = 1.3f;
-	float static const PaddleSetScaleY = 1.3f;
-	float static const PaddleSetPositionX = 250.f;
-	float static const PaddleSetPositionY = 450.f;
+	
 
 
 
 
-
-
-	const float  accel = 0.45f;
-	const float  decel = 0.03f;
-
-
-
-
+	//Normal paddle
 	m_paddle = new sf::Sprite();// adding in new assigns it to the heap.
-
-	if (!texture.loadFromFile("Assests/Sprites/Paddle.png"))
+	m_powerUpPaddle = new sf::Sprite();
+	paddletexture = new sf::Texture();
+	powerUptexture = new sf::Texture();
+	if (!paddletexture->loadFromFile("Assests/Sprites/Paddle.png"))
 	{
 
 	}
-	const sf::Texture* paddleTexture = &texture;
-	m_paddle->setTexture(*paddleTexture);
+
+	
+	 //sf::Texture* paddleTexture = &paddletexture;
+	
+	m_paddle->setTexture(*paddletexture);
+
 	m_paddle->setPosition(PaddleSetPositionX, PaddleSetPositionY);
 	m_paddle->setScale(PaddleSetScaleX, PaddleSetScaleY);
+	
+
+	//Power up paddle
+	if (!powerUptexture->loadFromFile("Assests/Sprites/PowerUpPaddle.png"))
+	{
+
+	}
+	
+	m_powerUpPaddle->setTexture(*powerUptexture);
+
+	m_powerUpPaddle->setPosition(1000, 1000);
+	m_powerUpPaddle->setScale(PaddleSetScaleX, PaddleSetScaleY);
+
+
+
+
+
 
 
 
 
 }
+
+
+	
+
+
+
+
+
 
 void Paddle::Move(sf::Event event)
 {
 	if (sf::Keyboard::Key::Left == event.key.code)
 	{
-		m_paddle->move(-80, 0);
+		m_paddle->move(PaddleMoveLeft,0);
 	}
 	else if (sf::Keyboard::Key::Right == event.key.code)
 	{
-		m_paddle->move(80, 0);
+		m_paddle->move(PaddleMoveRight,0);
 	}
 	
 }
+
+
+void Paddle::ChangeMovementSpeed(float p_powerupspeed)
+{
+
+	PaddleMoveLeft -= p_powerupspeed;
+	PaddleMoveRight += p_powerupspeed;
+	
+
+}
+
+
+
+
 
 Paddle::~Paddle()
 {
 }
 
 
+void Paddle::setTexture(int p_index)
+{
+	if (p_index == 0)
+	{
+		m_powerUpPaddle->setPosition(m_paddle->getPosition().x, m_paddle->getPosition().y-77);
+	
+	}
+	else if (p_index == 1)
+	{
+		m_paddle->setTexture(*paddletexture);
+	}
+	
+	
+}
+
 sf::Sprite * Paddle::GetSprite()
 {
 	return m_paddle;
+}
+
+
+
+sf::Sprite * Paddle::DrawPoweredUpSprite()
+{
+	return m_powerUpPaddle;
 }
