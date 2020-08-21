@@ -24,6 +24,7 @@
     <ClCompile Include="Blocks.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MultiBallPowerUp.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="SpeedPowerUp.cpp" />
   </ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Blocks.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="MultiBallPowerUp.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="SpeedPowerUp.h" />
   </ItemGroup>

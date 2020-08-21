@@ -94,13 +94,22 @@ void Paddle::setTexture(int p_index)
 {
 	if (p_index == 0)
 	{
-		m_powerUpPaddle->setPosition(m_paddle->getPosition().x, m_paddle->getPosition().y-77);
+		
+		m_powerUpPaddle->setPosition(m_paddle->getPosition().x, m_paddle->getPosition().y - 77);
 	
+		
 	}
+
 	else if (p_index == 1)
 	{
+		m_powerUpPaddle->setPosition(1000,1000);
 		m_paddle->setTexture(*paddletexture);
+		PaddleMoveLeft = ogPaddleMoveLeft;
+		PaddleMoveRight = ogPaddleMoveRight;
 	}
+	
+
+	
 	
 	
 }

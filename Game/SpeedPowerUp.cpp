@@ -9,7 +9,7 @@ SpeedPowerUp::SpeedPowerUp(sf::Vector2f size)
 
 	float static const SpeedPowerUpSetScaleX = 0.05f;
 	float static const SpeedPowerUpSetScaleY = 0.05f;
-	float static const SpeedPowerUpetPositionX = 300.f;
+	float static const SpeedPowerUpeSetPositionX = 300.f;
 	float static const SpeedPowerUpSetPositionY = 50.f;
 	moveX = 0.025f;
 	moveY = 0.035f;
@@ -26,7 +26,7 @@ SpeedPowerUp::SpeedPowerUp(sf::Vector2f size)
 
 	const sf::Texture* SpeedPowerUpTexture = &texture;
 	m_speedpowerup->setTexture(*SpeedPowerUpTexture);
-	m_speedpowerup->setPosition(SpeedPowerUpetPositionX, SpeedPowerUpSetPositionY);
+	m_speedpowerup->setPosition(SpeedPowerUpeSetPositionX, SpeedPowerUpSetPositionY);
 
 
 	std::cout << m_speedpowerup->getPosition().x << m_speedpowerup->getPosition().y << std::endl;

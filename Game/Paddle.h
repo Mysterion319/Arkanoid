@@ -15,15 +15,17 @@ private:
 	sf::Vector2f velocity;
 
 
+	
+
 	float  const PaddleSetScaleX = 1.f;
 	float  const PaddleSetScaleY = 1.3f;
 	float  const PaddleSetPositionX = 250.f;
 	float  const PaddleSetPositionY = 450.f;
-	float   PaddleMoveLeft = -10.f;
-	float   PaddleMoveRight = 10.f;
+	float   PaddleMoveLeft = -5.f;
+	float   PaddleMoveRight = 5.f;
 
-	
-
+	float const ogPaddleMoveLeft = -5.f;
+	float  const ogPaddleMoveRight = 5.f;
 
 public:
 	Paddle(sf::Vector2f size);

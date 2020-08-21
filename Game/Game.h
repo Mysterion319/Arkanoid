@@ -5,6 +5,7 @@ class Paddle;
 class Background;
 class Ball;
 class Blocks;
+class MultiBallPowerUp;
 class SpeedPowerUp;
 class Game 
 {
@@ -13,13 +14,29 @@ public:
 	~Game();
 	void GameScore();
 	void Loop();
+	
+
+
 	void GameInput(sf::Event p_event);
+
+
+
+
+
 private:
+	float fFrameTime = 1.f / 60.f;
+	float fElapsedTime = 0.f;
+	float totalTime = 0;
+	bool specalOn; 
+	sf::Clock timer;
 	Paddle * m_paddle;
 	Paddle * m_powerUpPaddle;
 	Background * m_background;
 	Ball * m_ball;
 	SpeedPowerUp * m_speedpowerup;
+	MultiBallPowerUp * m_multiBallPowerUp;
+	MultiBallPowerUp * m_Extrball1;
+	MultiBallPowerUp * m_Extrball2;
 	sf::RenderWindow *window;
 	Blocks * m_blocks;
 	sf::Text *m_gameScore;
