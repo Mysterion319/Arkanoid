@@ -7,6 +7,7 @@ class Ball;
 class Blocks;
 class MultiBallPowerUp;
 class SpeedPowerUp;
+class EnlargePaddlePowerUp;
 class Game 
 {
 public:
@@ -28,12 +29,15 @@ private:
 	float fElapsedTime = 0.f;
 	float totalTime = 0;
 	bool specalOn; 
+	bool EnlargeOn;
 	sf::Clock timer;
 	Paddle * m_paddle;
 	Paddle * m_powerUpPaddle;
+	Paddle * m_powerUpPaddle1;
 	Background * m_background;
 	Ball * m_ball;
 	SpeedPowerUp * m_speedpowerup;
+	EnlargePaddlePowerUp * m_EnlargePaddlePowerUp;
 	MultiBallPowerUp * m_multiBallPowerUp;
 	MultiBallPowerUp * m_Extrball1;
 	MultiBallPowerUp * m_Extrball2;

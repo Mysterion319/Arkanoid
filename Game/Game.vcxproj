@@ -22,6 +22,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Blocks.cpp" />
+    <ClCompile Include="EnlargePaddlePowerUp.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MultiBallPowerUp.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Blocks.h" />
+    <ClInclude Include="EnlargePaddlePowerUp.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MultiBallPowerUp.h" />
     <ClInclude Include="Paddle.h" />
