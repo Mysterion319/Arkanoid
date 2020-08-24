@@ -42,21 +42,10 @@ Game::Game()
 
 	m_blocks = new Blocks();
 
-
-
-
-	//Clock<> clock;
-
-	//constexpr long long spawnRate = 3000;
-	//while (true) {
-	//	if (clock.getMilliseconds() >= spawnRate) {
-	//		std::cout << "SPAWN\n";
-	//		clock.reset();
-	//	}
-	//}
-
-
-
+	PaddleLives();
+	GameScore();
+	Lives = 1;
+	Score = 0;
 
 
 
@@ -111,21 +100,26 @@ void Game::GameInput(sf::Event p_event)
 		{
 
 			if (m_ball->GetSprite()->getPosition().x < m_blocks->getblocks()->at(i)->getPosition().x - m_blocks->getblocks()->at(i)->getGlobalBounds().width)
+
 			{
+				Score++;
 				m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
 			}
 			else if (m_ball->GetSprite()->getPosition().x > m_blocks->getblocks()->at(i)->getPosition().x + m_blocks->getblocks()->at(i)->getGlobalBounds().width)
 			{
+				Score++;
 				m_ball->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
 			}
 
 
 			if (m_ball->GetSprite()->getPosition().y < m_blocks->getblocks()->at(i)->getPosition().y - m_blocks->getblocks()->at(i)->getGlobalBounds().height)
 			{
+				Score++;
 				m_ball->ChangeDirection(sf::Vector2f(1.0f, -1.0f));
 			}
 			else if (m_ball->GetSprite()->getPosition().y > m_blocks->getblocks()->at(i)->getPosition().y + m_blocks->getblocks()->at(i)->getGlobalBounds().height)
 			{
+				Score++;
 				m_ball->ChangeDirection(sf::Vector2f(1.0f, -1.0f));
 			}
 
@@ -138,7 +132,11 @@ void Game::GameInput(sf::Event p_event)
 	//Speed powerup 
 	if (m_speedpowerup->GetSprite()->getGlobalBounds().intersects(m_paddle->GetSprite()->getGlobalBounds()))
 	{
-
+		Lives--;
+		if (Lives == 0)//This is where I have set the lives to three.
+		{
+			std::cout << "Game Over You lose" << std::endl;//This is the game over message.
+		}
 
 		m_speedpowerup->GetSprite()->setPosition(1000, 1000);
 		m_paddle->ChangeMovementSpeed(10.f);
@@ -223,6 +221,7 @@ void Game::GameInput(sf::Event p_event)
 			if (m_Extrball1->GetExtraBallSprite()->getPosition().x < m_blocks->getblocks()->at(i)->getPosition().x - m_blocks->getblocks()->at(i)->getGlobalBounds().width)
 			{
 				m_Extrball1->ChangeDirection(sf::Vector2f(-1.0f, 1.0f));
+
 			}
 			else if (m_Extrball1->GetExtraBallSprite()->getPosition().x > m_blocks->getblocks()->at(i)->getPosition().x + m_blocks->getblocks()->at(i)->getGlobalBounds().width)
 			{
@@ -290,24 +289,13 @@ void Game::GameInput(sf::Event p_event)
 		totalTime = 0.0f;
 		m_EnlargePaddlePowerUp->EnlargePaddlePowerUpSprite()->setPosition(1000, 1000);
 		EnlargeOn = true;
-/*
 
-		
-		m_paddle->ChangeMovementSpeed(10.f);
-		m_paddle->setEnlargedPowerUpTexture(0);
-		
-
-		
-		
-
-*/
 	}
 	if (EnlargeOn and totalTime > 5)
 	{
 		m_paddle->GetSprite()->setScale(sf::Vector2f(1.f, 1.f));
 		totalTime = 0.0f;
 		EnlargeOn = false;
-		/*m_paddle->setEnlargedPowerUpTexture(1);*/
 	}
 
 	m_paddle->DrawPoweredUpSprite1()->setPosition(m_paddle->GetSprite()->getPosition().x, m_paddle->DrawPoweredUpSprite1()->getPosition().y);
@@ -338,13 +326,14 @@ void Game::draw()
 	window->draw(*m_paddle->DrawPoweredUpSprite());
 	window->draw(*m_paddle->DrawPoweredUpSprite1());
 	window->draw(*m_ball->GetSprite());
-	/*window->draw(*m_Extrball1->GetExtraBallSprite());
-	window->draw(*m_Extrball2->GetExtraBall2Sprite());
-	window->draw(*m_multiBallPowerUp->GetSprite());*/
+	//window->draw(*m_Extrball1->GetExtraBallSprite());
+	//window->draw(*m_Extrball2->GetExtraBall2Sprite());
+	//window->draw(*m_multiBallPowerUp->GetSprite());
 	window->draw(*m_speedpowerup->GetSprite());
 	window->draw(*m_EnlargePaddlePowerUp->EnlargePaddlePowerUpSprite());
+	window->draw(*m_lifes);
+	window->draw(*m_gameScore);
 	
-
 	
 	
 }
@@ -361,15 +350,36 @@ void Game::GameScore()
 
 	m_gameScore = new sf::Text();
 	font.loadFromFile("Assests/Fonts/arial.ttf");
-	m_gameScore->setCharacterSize(30);
+	m_gameScore->setCharacterSize(20);
 	m_gameScore->setStyle(sf::Text::Bold);
 	m_gameScore->setFont(font);
-	m_gameScore->setPosition(250, 1);
+	m_gameScore->setPosition(550, 1);
 	m_gameScore->setFillColor(sf::Color::White);
 
 
 }
 
+
+
+
+
+
+void Game::PaddleLives()
+{
+
+
+
+
+	m_lifes = new sf::Text();
+	font.loadFromFile("Assests/Fonts/arial.ttf");
+	m_lifes->setCharacterSize(20);
+	m_lifes->setStyle(sf::Text::Bold);
+	m_lifes->setFont(font);
+	m_lifes->setPosition(10, 1);
+	m_lifes->setFillColor(sf::Color::White);
+
+
+}
 
 
 
@@ -423,17 +433,18 @@ void Game::Loop()
 			}
 		}
 
-
+		m_lifes->setString("Lives" + std::to_string(Lives));
+		m_gameScore->setString("Score" + std::to_string(Score));
 		m_ball->Move(sf::Vector2f(1.5f, 1.1f));
 		m_speedpowerup->Move(sf::Vector2f(1.5f, 1.1f));
 		m_EnlargePaddlePowerUp->Move(sf::Vector2f(1.5f, 1.1f));
 		m_multiBallPowerUp->Move(sf::Vector2f(1.5f, 1.1f));
-		/*m_Extrball1->ExtraBallMove(sf::Vector2f(1.5f, 1.1f));
-		m_Extrball2->ExtraBallMove(sf::Vector2f(1.5f, 1.1f));*/
+		m_Extrball1->ExtraBallMove(sf::Vector2f(1.5f, 1.1f));
+		m_Extrball2->ExtraBallMove(sf::Vector2f(1.5f, 1.1f));
 		window->clear();
 
 		draw();
-		GameScore();
+	
 		
 
 		for (int j = 0; j < m_blocks->getblocks()->size(); j++)
